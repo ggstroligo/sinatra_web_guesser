@@ -1,17 +1,26 @@
 
 <html>
-  <head></head>
+  <head>
+    <style>
+      body {
+        background-color: <%= status[:bg_color] %>
+      }
+    </style>
+  </head>
   <body>
     <form>
       <input type='text' name='guess' />
       <input type='submit' value='Guess!' />
     </form>
+    <h1><%= status[:message] %></h1>
+    <h2>You have <%= attempts %> more attempts.</h2>
 
-    
     <% if guess %>
-      <h1><%= message %></h1>
       <p>Your guess is <%= guess %></p>     
-      <p>The SECRET NUMBER is <%= secret_number %></p>     
+    <% end %>
+    
+    <% if cheated || status[:correct] %>
+      <p>The SECRET NUMBER is <%= secret_number %></p>
     <% end %>
   </body>
 </html>
